@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AppointSys.ViewModels.AppointmentViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Appointment List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary rounded-0"><i class="fa fa-plus-circle"></i> Add New</a>
+</p>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Code)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName)
+            </td>
+            <td>
+                    <td>
+                            <a asp-action="Detail" asp-route-code="@item.Code" class="btn btn-sm btn-info rounded-0">Detail<i class="fa fa-pencil-alt"></i></a>
+                            @* <a asp-action="Delete" asp-route-code="@item.Code" class="btn btn-sm btn-danger rounded-0">Delete<i class="fa fa-trash-alt"></i></a> *@
+                    </td>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
